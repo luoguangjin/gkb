@@ -3,6 +3,7 @@ package com.lgj.server.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -52,8 +53,10 @@ public class User implements Serializable {
     private String email;
 
     @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private LocalDateTime createTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
 
