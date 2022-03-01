@@ -23,7 +23,7 @@ public class GlobalException {
         if(e instanceof SQLIntegrityConstraintViolationException){
             return RespBean.error("该数据与其他表产生关联，操作失败！");
         }
-        return RespBean.error("数据库异常，操作失败！！");
+        return RespBean.error("数据库异常，操作失败！");
     }
 
 }
