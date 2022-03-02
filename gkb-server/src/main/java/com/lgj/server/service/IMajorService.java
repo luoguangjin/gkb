@@ -3,6 +3,8 @@ package com.lgj.server.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lgj.server.pojo.Major;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,9 @@ import com.lgj.server.pojo.Major;
  */
 public interface IMajorService extends IService<Major> {
 
+    /**
+     * 获取所有专业信息
+     * @return
+     */
+    List<Major> getAllMajors();
 }

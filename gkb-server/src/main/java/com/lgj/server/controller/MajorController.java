@@ -1,9 +1,17 @@
 package com.lgj.server.controller;
 
 
+import com.lgj.server.pojo.Column;
+import com.lgj.server.pojo.Major;
+import com.lgj.server.service.impl.MajorServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,5 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/system/basic/major")
 public class MajorController {
+
+    @Autowired
+    private MajorServiceImpl majorService;
+
+    @ApiOperation(value = "获取所有专业信息")
+    @GetMapping("/")
+    private List<Major> getAllMajors(){
+        return majorService.getAllMajors();
+    }
 
 }

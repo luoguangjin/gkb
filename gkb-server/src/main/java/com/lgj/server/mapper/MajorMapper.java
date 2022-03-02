@@ -3,6 +3,8 @@ package com.lgj.server.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lgj.server.pojo.Major;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,4 +15,5 @@ import com.lgj.server.pojo.Major;
  */
 public interface MajorMapper extends BaseMapper<Major> {
 
+    List<Major> getAllMajors(Integer parentId);
 }
