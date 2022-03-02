@@ -21,6 +21,7 @@ import java.util.List;
  * @author xiaoluo
  * @since 2022-01-24
  */
+@Api(tags = "系统操作员信息管理")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

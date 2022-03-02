@@ -4,6 +4,7 @@ package com.lgj.server.controller;
 import com.lgj.server.pojo.Column;
 import com.lgj.server.pojo.RespBean;
 import com.lgj.server.service.IColumnService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author xiaoluo
  * @since 2022-02-01
  */
+@Api(tags = "动态分类管理")
 @RestController
 @RequestMapping("/system/basic/column")
 public class ColumnController {

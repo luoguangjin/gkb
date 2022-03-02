@@ -32,6 +32,7 @@ import java.util.List;
  * @author xiaoluo
  * @since 2022-01-24
  */
+@Api(tags = "用户信息管理")
 @RestController
 @RequestMapping("/user/basic")
 public class UserController {

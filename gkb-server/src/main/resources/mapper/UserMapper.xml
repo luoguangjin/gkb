@@ -22,17 +22,17 @@
     <!-- 用户信息列表 带分页 -->
     <select id="getUserByPage" resultMap="BaseResultMap">
         select * from sys_user
-<!--            where-->
-<!--                <if test="user.username!=null and user.username!=''">-->
-<!--                    username like concat('%',#{username},'%')-->
-<!--                </if>-->
-<!--                <if test="user.nickname!=null and user.nickname!=''">-->
-<!--                    and nickname like concat('%',#{nickname},'%')-->
-<!--                </if>-->
-<!--                <if test="user.gender!=null and user.gender!=''">-->
-<!--                    and gender like concat('%',#{gender},'%')-->
-<!--                </if>-->
-<!--            order by id-->
+            where
+                <if test="user.username!=null and user.username!=''">
+                    username like concat('%',#{username},'%')
+                </if>
+                <if test="user.nickname!=null and user.nickname!=''">
+                    and nickname like concat('%',#{nickname},'%')
+                </if>
+                <if test="user.gender!=null and user.gender!=''">
+                    and gender like concat('%',#{gender},'%')
+                </if>
+            order by id
     </select>
 
 
