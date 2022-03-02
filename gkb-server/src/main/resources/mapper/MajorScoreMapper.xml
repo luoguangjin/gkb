@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgj.mapper.MajorScoreMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lgj.server.pojo.MajorScore">
+        <id column="id" property="id" />
+        <result column="maj_code" property="majCode" />
+        <result column="col_code" property="colCode" />
+        <result column="cid" property="cid" />
+        <result column="year" property="year" />
+        <result column="max_line" property="maxLine" />
+        <result column="avg_line" property="avgLine" />
+        <result column="min_line" property="minLine" />
+        <result column="batch" property="batch" />
+        <result column="disc_type" property="discType" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, maj_code, col_code, cid, year, max_line, avg_line, min_line, batch, disc_type, create_time, update_time
+    </sql>
+
+</mapper>

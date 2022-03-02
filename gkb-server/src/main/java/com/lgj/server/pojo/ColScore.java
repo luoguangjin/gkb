@@ -1,6 +1,5 @@
 package com.lgj.server.pojo;
 
-import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,53 +19,52 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-01-24
+ * @since 2022-03-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_user")
-@ApiModel(value="User对象", description="")
-public class User implements Serializable {
+@TableName("sys_col_score")
+@ApiModel(value="ColScore对象", description="")
+public class ColScore implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户编号")
+    @ApiModelProperty(value = "自增编号")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "账号")
-    @Excel(name = "用户账号")
-    private String username;
+    @ApiModelProperty(value = "学院编码")
+    private String colCode;
 
-    @ApiModelProperty(value = "密码")
-    @Excel(name = "密码")
-    private String password;
+    @ApiModelProperty(value = "招生年份")
+    @JsonFormat(pattern = "yyyy",timezone = "Asia/Shanghai")
+    private LocalDateTime year;
 
-    @ApiModelProperty(value = "昵称")
-    @Excel(name = "昵称")
-    private String nickname;
+    @ApiModelProperty(value = "录取最高分")
+    private String maxLine;
 
-    @ApiModelProperty(value = "手机号码")
-    @Excel(name = "手机号码")
-    private String phone;
+    @ApiModelProperty(value = "录取平均分")
+    private String avgLine;
 
-    @ApiModelProperty(value = "性别")
-    @Excel(name = "性别")
-    private String gender;
+    @ApiModelProperty(value = "录取最低分")
+    private String minLine;
 
-    @ApiModelProperty(value = "邮箱")
-    @Excel(name = "邮箱")
-    private String email;
+    @ApiModelProperty(value = "招生类型")
+    private String enrType;
+
+    @ApiModelProperty(value = "录取批次")
+    private String batch;
+
+    @ApiModelProperty(value = "(0代表文，1代表理，2代表综合）")
+    private Integer discType;
 
     @ApiModelProperty(value = "创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    @Excel(name = "创建时间", width=20, format = "yyyy-MM-dd")
     private LocalDateTime createTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @ApiModelProperty(value = "修改时间")
-    @Excel(name = "修改时间" ,width=20, format = "yyyy-MM-dd")
     private LocalDateTime updateTime;
 
 

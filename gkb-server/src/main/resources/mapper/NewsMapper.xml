@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgj.server.mapper.NewsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lgj.server.pojo.News">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="img" property="img" />
+        <result column="intro" property="intro" />
+        <result column="content" property="content" />
+        <result column="author" property="author" />
+        <result column="column_id" property="columnId" />
+        <result column="keyword" property="keyword" />
+        <result column="count" property="count" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    
+    <resultMap id="NewsInfo" type="com.lgj.server.pojo.News" extends="BaseResultMap">
+        <association property="columnId" javaType="com.lgj.server.pojo.Column">
+            <result column="cname" property="name"/>
+        </association>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, img, intro, content, author, column_id, keyword, count, create_time, update_time
+    </sql>
+
+    <select id="getUserByPage" resultMap="NewsInfo">
+        select
+            n.*,
+            c.name as cname
+        from
+            sys_news n,
+            sys_column c
+        where n.column_id=c.id
+<!--            <if test="news.title!=null and news.title!=''">-->
+<!--                and n.title like CONCAT('%',#{news.title},'%')-->
+<!--            </if>-->
+<!--            <if test="news.intro!=null and news.intro!=''">-->
+<!--                and n.intro like CONCAT('%',#{news.intro},'%')-->
+<!--            </if>-->
+<!--            <if test="news.content!=null and news.content!=''">-->
+<!--                and n.content like CONCAT('%',#{news.content},'%')-->
+<!--            </if>-->
+<!--            <if test="news.keyword!=null and news.keyword!=''">-->
+<!--                and n.keyword like CONCAT('%',#{news.keyword},'%')-->
+<!--            </if>-->
+<!--            <if test="news.columnId!=null ">-->
+<!--                and n.columnId=#{news.columnId}-->
+<!--            </if>-->
+    </select>
+
+</mapper>

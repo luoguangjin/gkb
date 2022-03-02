@@ -8,6 +8,7 @@ import com.lgj.server.pojo.Role;
 import com.lgj.server.service.IMenuRoleService;
 import com.lgj.server.service.IMenuService;
 import com.lgj.server.service.IRoleService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
  * @Date 2022/2/1 23:52
  * @Created by 24964
  */
+@Api(tags = "角色信息管理")
 @RestController
 @RequestMapping("/system/basic/permiss")
 public class PermissController {

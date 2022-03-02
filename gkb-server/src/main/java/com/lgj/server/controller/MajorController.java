@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-01-24
+ * @since 2022-03-01
  */
-@Api(tags = "系统操作员角色管理")
+@Api(tags = "专业信息管理")
 @RestController
-@RequestMapping("/admin-role")
-public class AdminRoleController {
+@RequestMapping("/system/basic/major")
+public class MajorController {
 
 }

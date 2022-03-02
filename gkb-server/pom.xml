@@ -35,12 +35,12 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
-    <!--mysql依赖  -->
-<!--    <dependency>-->
-<!--      <groupId>mysql</groupId>-->
-<!--      <artifactId>mysql-connector-java</artifactId>-->
-<!--      <scope>runtime</scope>-->
-<!--    </dependency>-->
+<!--    mysql依赖  -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
       <dependency>
          <groupId>com.dameng</groupId>
          <artifactId>dm-jdbc</artifactId>
@@ -89,6 +89,13 @@
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>1.2.79</version>
+    </dependency>
+
+    <!-- easy poi相关依赖 -->
+    <dependency>
+      <groupId>cn.afterturn</groupId>
+      <artifactId>easypoi-spring-boot-starter</artifactId>
+      <version>4.1.3</version>
     </dependency>
 
   </dependencies>
