@@ -52,7 +52,7 @@ public class News implements Serializable {
     private String author;
 
     @ApiModelProperty(value = "所属栏目编号")
-    private String columnId;
+    private Integer columnId;
 
     @ApiModelProperty(value = "关键字")
     private String keyword;

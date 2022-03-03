@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lgj.server.mapper.NewsMapper;
 import com.lgj.server.pojo.News;
 import com.lgj.server.pojo.PageBean;
+import com.lgj.server.pojo.RespBean;
 import com.lgj.server.pojo.User;
 import com.lgj.server.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,17 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements IN
      * @param page
      * @param size
      * @param news
-     * @param dateScope
+     * @param createTime
      * @return
      */
     @Override
-    public PageBean getNewByPage(Integer page, Integer size, News news, LocalDate[] dateScope) {
+    public PageBean getNewsByPage(Integer page, Integer size, News news, LocalDate[] createTime) {
         Page<News> pages = new Page<>(page,size);
-        IPage<News> newsIPage = newsMapper.getUserByPage(pages,news,dateScope);
+        IPage<News> newsIPage = newsMapper.getNewsByPage(pages,news,createTime);
         PageBean pageBean = new PageBean(newsIPage.getTotal(),newsIPage.getRecords());
         return pageBean;
     }
+
+
+
 }

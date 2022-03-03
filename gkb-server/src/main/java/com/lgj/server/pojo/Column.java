@@ -34,7 +34,7 @@ public class Column implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "部门名称")
+    @ApiModelProperty(value = "栏目名称")
     private String name;
 
     @ApiModelProperty(value = "父id")

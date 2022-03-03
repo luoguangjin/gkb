@@ -21,8 +21,8 @@ public interface INewsService extends IService<News> {
      * @param page
      * @param size
      * @param news
-     * @param dateScope
+     * @param createTime
      * @return
      */
-    PageBean getNewByPage(Integer page, Integer size, News news, LocalDate[] dateScope);
+    PageBean getNewsByPage(Integer page, Integer size, News news, LocalDate[] createTime);
 }

@@ -18,7 +18,8 @@
     </resultMap>
     
     <resultMap id="NewsInfo" type="com.lgj.server.pojo.News" extends="BaseResultMap">
-        <association property="columnId" javaType="com.lgj.server.pojo.Column">
+        <association property="column" javaType="com.lgj.server.pojo.Column">
+            <id column="cid" property="id"/>
             <result column="cname" property="name"/>
         </association>
     </resultMap>
@@ -28,29 +29,27 @@
         id, title, img, intro, content, author, column_id, keyword, count, create_time, update_time
     </sql>
 
-    <select id="getUserByPage" resultMap="NewsInfo">
-        select
+    <select id="getNewsByPage" resultMap="NewsInfo">
+        SELECT
             n.*,
-            c.name as cname
-        from
+            c.id AS cid,
+            c.`name` AS cname
+            FROM
             sys_news n,
             sys_column c
-        where n.column_id=c.id
-<!--            <if test="news.title!=null and news.title!=''">-->
-<!--                and n.title like CONCAT('%',#{news.title},'%')-->
-<!--            </if>-->
-<!--            <if test="news.intro!=null and news.intro!=''">-->
-<!--                and n.intro like CONCAT('%',#{news.intro},'%')-->
-<!--            </if>-->
-<!--            <if test="news.content!=null and news.content!=''">-->
-<!--                and n.content like CONCAT('%',#{news.content},'%')-->
-<!--            </if>-->
-<!--            <if test="news.keyword!=null and news.keyword!=''">-->
-<!--                and n.keyword like CONCAT('%',#{news.keyword},'%')-->
-<!--            </if>-->
-<!--            <if test="news.columnId!=null ">-->
-<!--                and n.columnId=#{news.columnId}-->
-<!--            </if>-->
+        WHERE
+            n.column_id = c.id
+            <if test="news.title!=null and news.title!=''">
+                AND n.title LIKE CONCAT('%',#{news.title},'%')
+            </if>
+            <if test="news.columnId!=null">
+                AND n.column_id = #{news.columnId}
+            </if>
+            <if test="createTime!=null and createTime.length==2">
+                AND n.create_time BETWEEN #{createTime[0]} AND #{createTime[1]}
+            </if>
+            ORDER BY
+            n.id
     </select>
 
 </mapper>

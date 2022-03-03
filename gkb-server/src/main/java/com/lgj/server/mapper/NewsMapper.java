@@ -21,8 +21,7 @@ public interface NewsMapper extends BaseMapper<News> {
      * 获取所有新闻信息 带分页
      * @param pages
      * @param news
-     * @param dateScope
      * @return
      */
-    IPage<News> getUserByPage(Page<News> pages, News news, LocalDate[] dateScope);
+    IPage<News> getNewsByPage(Page<News> pages, News news,LocalDate[] createTime);
 }
