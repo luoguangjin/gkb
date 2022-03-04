@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,17 +42,44 @@ public class NewsController {
 
     @ApiOperation(value = "获取所有动态分类")
     @GetMapping("/column")
-    private List<Column> getColumnAll(){
+    public List<Column> getColumnAll(){
         return columnService.getAllColumns();
     }
 
     @ApiOperation(value = "添加动态")
     @PostMapping("/")
-    private RespBean addNews(News news){
+    public RespBean addNews(@RequestBody News news){
         if (newsService.save(news)){
             return RespBean.success("添加成功！");
         }
         return RespBean.error("添加失败！");
+    }
+
+    @ApiOperation(value = "更新动态")
+    @PutMapping("/")
+    public RespBean updateNews(@RequestBody News news){
+        if (newsService.updateById(news)){
+            return RespBean.success("更新成功！！");
+        }
+        return RespBean.error("更新失败！");
+    }
+
+    @ApiOperation(value = "删除动态")
+    @DeleteMapping("/{id}")
+    public RespBean deleteNews(@PathVariable Integer id){
+        if (newsService.removeById(id)){
+            return RespBean.success("删除成功！");
+        }
+        return RespBean.error("删除失败！");
+    }
+
+    @ApiOperation(value = "批量删除")
+    @DeleteMapping("/")
+    public RespBean deleteNewsByIds(Integer[] ids){
+        if (newsService.removeByIds(Arrays.asList(ids))){
+            return RespBean.success("删除成功！");
+        }
+        return RespBean.error("删除失败！！");
     }
 
 }

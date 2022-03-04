@@ -15,7 +15,6 @@
     <resultMap id="ColumnWithChildren" type="com.lgj.server.pojo.Column" extends="BaseResultMap">
         <collection property="children" ofType="com.lgj.server.pojo.Column"
                     select="com.lgj.server.mapper.ColumnMapper.getAllColumns" column="id">
-
         </collection>
     </resultMap>
     

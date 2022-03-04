@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -53,6 +54,14 @@ public class Major implements Serializable {
     @ApiModelProperty(value = "是否上级")
     @TableField("isParent")
     private Boolean isParent;
+
+    @ApiModelProperty(value = "子栏目列表")
+    @TableField(exist = false)
+    private List<Major> children;
+
+    @ApiModelProperty(value = "返回结果，存储过程使用")
+    @TableField(exist = false)
+    private Integer result;
 
 
 }

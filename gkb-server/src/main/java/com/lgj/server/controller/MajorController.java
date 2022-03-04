@@ -3,13 +3,12 @@ package com.lgj.server.controller;
 
 import com.lgj.server.pojo.Column;
 import com.lgj.server.pojo.Major;
+import com.lgj.server.pojo.RespBean;
 import com.lgj.server.service.impl.MajorServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,8 +30,19 @@ public class MajorController {
 
     @ApiOperation(value = "获取所有专业信息")
     @GetMapping("/")
-    private List<Major> getAllMajors(){
+    public List<Major> getAllMajors(){
         return majorService.getAllMajors();
     }
 
+    @ApiOperation(value = "添加专业信息")
+    @PostMapping("/")
+    public RespBean addMajor(@RequestBody Major major){
+        return majorService.addMajor(major);
+    }
+
+    @ApiOperation(value = "删除专业信息")
+    @DeleteMapping("/{id}")
+    private RespBean deleteMajor(@PathVariable Integer id){
+        return majorService.deleteMajor(id);
+    }
 }
