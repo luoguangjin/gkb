@@ -35,4 +35,10 @@ public interface IMajorService extends IService<Major> {
      * @return
      */
     RespBean deleteMajor(Integer id);
+
+    /**
+     * 通过学校id获取专业信息
+     * @return
+     */
+    List<Major> getMajorsByCollegeId(Integer id);
 }

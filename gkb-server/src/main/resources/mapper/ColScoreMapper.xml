@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lgj.mapper.ColScoreMapper">
+<mapper namespace="com.lgj.server.mapper.ColScoreMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.lgj.server.pojo.ColScore">
         <id column="id" property="id" />
-        <result column="col_code" property="colCode" />
+        <result column="colId" property="colId" />
+        <result column="cityId" property="cityId" />
         <result column="year" property="year" />
-        <result column="max_line" property="maxLine" />
-        <result column="avg_line" property="avgLine" />
-        <result column="min_line" property="minLine" />
-        <result column="enr_type" property="enrType" />
-        <result column="batch" property="batch" />
-        <result column="disc_type" property="discType" />
+        <result column="maxLine" property="maxLine" />
+        <result column="avgLine" property="avgLine" />
+        <result column="minLine" property="minLine" />
+        <result column="num" property="num" />
+        <result column="batchId" property="batchId" />
+        <result column="examId" property="examId" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, col_code, year, max_line, avg_line, min_line, enr_type, batch, disc_type, create_time, update_time
+        id, colId, cityId, year, maxLine, avgLine, minLine, num, batchId, examId, create_time, update_time
     </sql>
 
 </mapper>

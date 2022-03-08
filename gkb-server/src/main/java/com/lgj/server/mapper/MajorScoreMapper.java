@@ -9,7 +9,7 @@ import com.lgj.server.pojo.MajorScore;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
 public interface MajorScoreMapper extends BaseMapper<MajorScore> {
 

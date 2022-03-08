@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
 @Service
 public class ColScoreServiceImpl extends ServiceImpl<ColScoreMapper, ColScore> implements IColScoreService {

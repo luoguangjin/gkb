@@ -2,6 +2,7 @@ package com.lgj.server.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lgj.server.mapper.MajorMapper;
+import com.lgj.server.pojo.College;
 import com.lgj.server.pojo.Column;
 import com.lgj.server.pojo.Major;
 import com.lgj.server.pojo.RespBean;
@@ -53,5 +54,14 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
             return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
+    }
+
+    /**
+     * 通过学校id获取专业信息
+     * @return
+     */
+    @Override
+    public List<Major> getMajorsByCollegeId(Integer id) {
+        return majorMapper.getMajorsByCollegeId(id);
     }
 }

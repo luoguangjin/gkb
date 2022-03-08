@@ -3,10 +3,8 @@ package com.lgj.server.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lgj.server.pojo.College;
+import com.lgj.server.pojo.Batch;
 import org.apache.ibatis.annotations.Param;
-
-import java.time.LocalDate;
 
 /**
  * <p>
@@ -14,16 +12,15 @@ import java.time.LocalDate;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
-public interface CollegeMapper extends BaseMapper<College> {
+public interface BatchMapper extends BaseMapper<Batch> {
 
     /**
-     * 学校信息带分页
+     * 获取批次信息带分页
      * @param pages
-     * @param college
-     * @param colDate
+     * @param batch
      * @return
      */
-    IPage<College> getCollegeByPage(Page<College> pages, @Param("college") College college, @Param("colDate") LocalDate[] colDate);
+    IPage<Batch> getBatchByPage(Page<Batch> pages,@Param("batch") Batch batch);
 }

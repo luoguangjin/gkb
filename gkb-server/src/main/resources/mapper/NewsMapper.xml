@@ -10,7 +10,7 @@
         <result column="intro" property="intro" />
         <result column="content" property="content" />
         <result column="author" property="author" />
-        <result column="column_id" property="columnId" />
+        <result column="columnId" property="columnId" />
         <result column="keyword" property="keyword" />
         <result column="count" property="count" />
         <result column="create_time" property="createTime" />
@@ -26,7 +26,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, title, img, intro, content, author, column_id, keyword, count, create_time, update_time
+        id, title, img, intro, content, author, columnId, keyword, count, create_time, update_time
     </sql>
 
     <select id="getNewsByPage" resultMap="NewsInfo">
@@ -38,12 +38,12 @@
             sys_news n,
             sys_column c
         WHERE
-            n.column_id = c.id
+            n.columnId = c.id
             <if test="news.title!=null and news.title!=''">
                 AND n.title LIKE CONCAT('%',#{news.title},'%')
             </if>
             <if test="news.columnId!=null">
-                AND n.column_id = #{news.columnId}
+                AND n.columnId = #{news.columnId}
             </if>
             <if test="createTime!=null and createTime.length==2">
                 AND n.create_time BETWEEN #{createTime[0]} AND #{createTime[1]}

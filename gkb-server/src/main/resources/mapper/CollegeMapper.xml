@@ -1,33 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lgj.mapper.CollegeMapper">
+<mapper namespace="com.lgj.server.mapper.CollegeMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.lgj.server.pojo.College">
         <id column="id" property="id" />
         <result column="code" property="code" />
         <result column="name" property="name" />
-        <result column="cid" property="cid" />
-        <result column="college_chatics" property="collegeChatics" />
-        <result column="college_subje" property="collegeSubje" />
+        <result column="cId" property="cId" />
+        <result column="collegeChatics" property="collegeChatics" />
+        <result column="collegeSubje" property="collegeSubje" />
         <result column="isDualClass" property="isDualClass" />
-        <result column="eid" property="eid" />
-        <result column="pid" property="pid" />
+        <result column="eId" property="eId" />
+        <result column="qId" property="qId" />
         <result column="ranking" property="ranking" />
-        <result column="web_site" property="webSite" />
+        <result column="webSite" property="webSite" />
         <result column="number" property="number" />
         <result column="email" property="email" />
         <result column="address" property="address" />
         <result column="logo" property="logo" />
         <result column="intro" property="intro" />
-        <result column="college_date" property="collegeDate" />
+        <result column="collegeDate" property="collegeDate" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
 
+    <resultMap id="CollegeInfo" type="com.lgj.server.pojo.College" extends="BaseResultMap">
+        <association property="city" javaType="com.lgj.server.pojo.City">
+            <id column="cId" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+        <association property="edulevel" javaType="com.lgj.server.pojo.Edulevel">
+            <id column="eId" property="id"/>
+            <result column="ename" property="name"/>
+        </association>
+        <association property="qualificate" javaType="com.lgj.server.pojo.Qualificate">
+            <id column="qId" property="id"/>
+            <result column="qname" property="name"/>
+        </association>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, code, name, cid, college_chatics, college_subje, isDualClass, eid, pid, ranking, web_site, number, email, address, logo, intro, college_date, create_time, update_time
+        id, code, name, cId, collegeChatics, collegeSubje, isDualClass, eId, qId, ranking, webSite, number, email, address, logo, intro, collegeDate, create_time, update_time
     </sql>
+
+    <select id="getCollegeByPage" resultMap="CollegeInfo">
+        SELECT
+            col.*,
+            c.id AS cid,
+            c.`name` AS cname,
+            e.id AS eid,
+            e.`name` AS ename,
+            q.id AS qid,
+            q.`name` AS qname
+        FROM
+            sys_college col,
+            sys_city c,
+            sys_edulevel e,
+            sys_qualificate q
+        WHERE
+            col.cId = c.id
+            AND col.eId = e.id
+            AND col.qId = q.id
+        <!--            <if test="college.name!=null and college.name!=''">-->
+<!--                AND col.name LIKE CONCAT('%',#{college.name},'%')-->
+<!--            </if>-->
+<!--            <if test="college.eid!=null">-->
+<!--                AND col.eid = #{college.eid}-->
+<!--            </if>-->
+<!--            <if test="college.qid!=null">-->
+<!--                AND col.qid = #{college.qid}-->
+<!--            </if>-->
+        ORDER BY
+            col.id
+    </select>
 
 </mapper>

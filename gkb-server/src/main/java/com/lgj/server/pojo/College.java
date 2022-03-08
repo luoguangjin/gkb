@@ -36,13 +36,13 @@ public class College implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "学院代码")
-    private String code;
+    private Integer code;
 
     @ApiModelProperty(value = "学院名称")
     private String name;
 
     @ApiModelProperty(value = "城市id")
-    private Integer cid;
+    private String cId;
 
     @ApiModelProperty(value = "院校特色（211、985）")
     private String collegeChatics;
@@ -55,10 +55,10 @@ public class College implements Serializable {
     private Integer isDualClass;
 
     @ApiModelProperty(value = "高校性质id")
-    private String eid;
+    private String eId;
 
     @ApiModelProperty(value = "学院资质id")
-    private String pid;
+    private String qId;
 
     @ApiModelProperty(value = "全国排名")
     private Integer ranking;
@@ -92,6 +92,18 @@ public class College implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
+
+    @ApiModelProperty(value = "城市")
+    @TableField(exist = false)
+    private City city;
+
+    @ApiModelProperty(value = "高校资质")
+    @TableField(exist = false)
+    private Qualificate qualificate;
+
+    @ApiModelProperty(value = "高校性质")
+    @TableField(exist = false)
+    private Edulevel edulevel;
 
 
 }

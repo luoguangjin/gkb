@@ -45,4 +45,5 @@ public class MajorController {
     private RespBean deleteMajor(@PathVariable Integer id){
         return majorService.deleteMajor(id);
     }
+
 }

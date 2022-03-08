@@ -1,7 +1,6 @@
 package com.lgj.server.controller;
 
 
-import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
-@Api(tags = "高校分数线管理")
 @RestController
-@RequestMapping("/system/basic/col-score")
+@RequestMapping("/col-score")
 public class ColScoreController {
 
 }

@@ -31,4 +31,10 @@ public interface MajorMapper extends BaseMapper<Major> {
      * @return
      */
     RespBean deleteMajor(Major major);
+
+    /**
+     * 根据学校id获取专业信息
+     * @return
+     */
+    List<Major> getMajorsByCollegeId(Integer id);
 }

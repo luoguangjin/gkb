@@ -17,26 +17,23 @@ import java.io.Serializable;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_col_major")
-@ApiModel(value="ColMajor对象", description="")
-public class ColMajor implements Serializable {
+@TableName("sys_batch")
+@ApiModel(value="Batch对象", description="")
+public class Batch implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @ApiModelProperty(value = "编号")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "专业id")
-    private Integer mid;
-
-    @ApiModelProperty(value = "学校id")
-    private Integer cid;
+    @ApiModelProperty(value = "批次名称")
+    private String name;
 
 
 }

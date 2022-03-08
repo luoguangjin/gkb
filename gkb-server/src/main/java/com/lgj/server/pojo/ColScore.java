@@ -1,9 +1,9 @@
 package com.lgj.server.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author xiaoluo
- * @since 2022-03-01
+ * @since 2022-03-08
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -34,36 +34,43 @@ public class ColScore implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "学院编码")
-    private String colCode;
+    @ApiModelProperty(value = "高校id")
+    @TableField("colId")
+    private String colId;
+
+    @ApiModelProperty(value = "招生地区id")
+    @TableField("cityId")
+    private String cityId;
 
     @ApiModelProperty(value = "招生年份")
-    @JsonFormat(pattern = "yyyy",timezone = "Asia/Shanghai")
     private LocalDateTime year;
 
     @ApiModelProperty(value = "录取最高分")
+    @TableField("maxLine")
     private String maxLine;
 
     @ApiModelProperty(value = "录取平均分")
+    @TableField("avgLine")
     private String avgLine;
 
     @ApiModelProperty(value = "录取最低分")
+    @TableField("minLine")
     private String minLine;
 
-    @ApiModelProperty(value = "招生类型")
-    private String enrType;
+    @ApiModelProperty(value = "录取人数")
+    private Integer num;
 
-    @ApiModelProperty(value = "录取批次")
-    private String batch;
+    @ApiModelProperty(value = "录取批次编号")
+    @TableField("batchId")
+    private String batchId;
 
-    @ApiModelProperty(value = "(0代表文，1代表理，2代表综合）")
-    private Integer discType;
+    @ApiModelProperty(value = "考生类别编号")
+    @TableField("examId")
+    private String examId;
 
     @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private LocalDateTime createTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
 
