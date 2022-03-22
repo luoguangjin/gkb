@@ -74,5 +74,20 @@ public class ColScore implements Serializable {
     @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
 
+    @ApiModelProperty(value = "高校")
+    @TableField(exist = false)
+    private College college;
+
+    @ApiModelProperty(value = "城市")
+    @TableField(exist = false)
+    private City city;
+
+    @ApiModelProperty(value = "考生类别")
+    @TableField(exist = false)
+    private ExamType examType;
+
+    @ApiModelProperty(value = "录取批次")
+    @TableField(exist = false)
+    private Batch batch;
 
 }

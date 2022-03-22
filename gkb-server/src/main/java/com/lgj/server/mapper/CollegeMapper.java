@@ -26,4 +26,11 @@ public interface CollegeMapper extends BaseMapper<College> {
      * @return
      */
     IPage<College> getCollegeByPage(Page<College> pages, @Param("college") College college, @Param("colDate") LocalDate[] colDate);
+
+    /**
+     * 根据id查询数据详情
+     * @param id
+     * @return
+     */
+    College selectByOne(Integer id);
 }

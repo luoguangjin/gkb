@@ -64,4 +64,9 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
     public List<Major> getMajorsByCollegeId(Integer id) {
         return majorMapper.getMajorsByCollegeId(id);
     }
+
+    @Override
+    public List<Major> getMajorsByParentId(Integer pid) {
+        return majorMapper.getMajorsByParentId(pid);
+    }
 }

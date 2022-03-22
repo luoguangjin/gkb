@@ -18,9 +18,61 @@
         <result column="update_time" property="updateTime" />
     </resultMap>
 
+    <resultMap id="ColScoreInfo" type="com.lgj.server.pojo.ColScore" extends="BaseResultMap">
+        <association property="college" javaType="com.lgj.server.pojo.College">
+            <id column="collegeId" property="id"/>
+            <result column="colname" property="name"/>
+        </association>
+        <association property="city" javaType="com.lgj.server.pojo.City">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+        <association property="batch" javaType="com.lgj.server.pojo.Batch">
+            <id column="bid" property="id"/>
+            <result column="bname" property="name"/>
+        </association>
+        <association property="examType" javaType="com.lgj.server.pojo.ExamType">
+            <id column="etid" property="id"/>
+            <result column="etname" property="name"/>
+        </association>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, colId, cityId, year, maxLine, avgLine, minLine, num, batchId, examId, create_time, update_time
     </sql>
+
+    <select id="getColScoreByPage" resultMap="ColScoreInfo">
+        SELECT
+            cs.id,
+            cs.`year`,
+            cs.maxLine,
+            cs.minLine,
+            cs.avgLine,
+            cs.num,
+            col.id AS collegeId,
+            col.`name` AS colname,
+            col.cId AS colCity,
+            col.logo AS colLogo,
+            c.id AS cid,
+            c.`name` AS cname,
+            b.id AS bid,
+            b.`name` AS bname,
+            et.id AS etid,
+            et.`name` AS etname
+        FROM
+            sys_col_score cs,
+            sys_college col,
+            sys_city c,
+            sys_batch b,
+            sys_exam_type et
+        WHERE
+            cs.colId = col.id
+          AND cs.cityId = c.id
+          AND cs.batchId = b.id
+          AND cs.examId = et.id
+        ORDER BY
+            cs.id
+    </select>
 
 </mapper>

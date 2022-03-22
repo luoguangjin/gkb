@@ -2,13 +2,16 @@ package com.lgj.server.controller;
 
 
 import com.lgj.server.pojo.City;
+import com.lgj.server.pojo.PageBean;
 import com.lgj.server.pojo.RespBean;
+import com.lgj.server.pojo.User;
 import com.lgj.server.service.ICityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,6 +36,14 @@ public class CityController {
     @GetMapping("/")
     public List<City> getAllCity(){
         return cityService.list();
+    }
+
+    @ApiOperation(value = "获取所有城市信息(带分页)")
+    @GetMapping("/ByPage/")
+    public PageBean getCity(@RequestParam(defaultValue = "1") Integer page,
+                            @RequestParam(defaultValue = "10") Integer size, City city){//dateScope用来接收时间
+
+        return cityService.getCityByPage(page,size,city);
     }
 
     @ApiOperation(value = "添加城市信息")

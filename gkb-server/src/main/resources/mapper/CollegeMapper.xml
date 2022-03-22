@@ -45,6 +45,10 @@
         id, code, name, cId, collegeChatics, collegeSubje, isDualClass, eId, qId, ranking, webSite, number, email, address, logo, intro, collegeDate, create_time, update_time
     </sql>
 
+    <select id="selectByOne" resultMap="BaseResultMap">
+        select * from sys_college where id = #{id}
+    </select>
+
     <select id="getCollegeByPage" resultMap="CollegeInfo">
         SELECT
             col.*,

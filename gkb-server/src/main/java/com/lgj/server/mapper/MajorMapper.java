@@ -37,4 +37,11 @@ public interface MajorMapper extends BaseMapper<Major> {
      * @return
      */
     List<Major> getMajorsByCollegeId(Integer id);
+
+    /**
+     * 通过父id查询专业小类
+     * @param pid
+     * @return
+     */
+    List<Major> getMajorsByParentId(Integer pid);
 }

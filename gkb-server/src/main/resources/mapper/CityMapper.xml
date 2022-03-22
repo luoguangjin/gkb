@@ -12,5 +12,13 @@
     <sql id="Base_Column_List">
         id, name
     </sql>
+    <!-- 查询城市信息带分页 -->
+    <select id="getCityByPage" resultMap="BaseResultMap">
+        select * from sys_city
+<!--        where-->
+<!--        <if test="city.name!=null and city.name!=''">-->
+<!--            name like concat('%',#{city.name},'%')-->
+<!--        </if>-->
+    </select>
 
 </mapper>

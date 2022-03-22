@@ -1,11 +1,11 @@
 package com.lgj.server.controller;
 
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.lgj.server.mapper.CollegeMapper;
 import com.lgj.server.pojo.*;
 import com.lgj.server.service.ICollegeService;
 import com.lgj.server.service.IMajorService;
-import com.lgj.server.service.IMenuService;
-import com.lgj.server.service.impl.MajorServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +32,12 @@ public class CollegeController {
     private ICollegeService collegeService;
     @Autowired
     private IMajorService majorService;
+    @Autowired
+    private CollegeMapper collegeMapper;
 
+    @CrossOrigin
     @ApiOperation(value = "通过学校id获取专业信息")
-    @GetMapping("/{id}")
+    @GetMapping("/majorByCollId/{id}")
     public List<Major> getMajorsByCollegeId(@PathVariable Integer id){
         return majorService.getMajorsByCollegeId(id);
     }
@@ -45,6 +48,14 @@ public class CollegeController {
                                 @RequestParam(defaultValue = "10") Integer size,College college,
                                 LocalDate[] colDate){
         return collegeService.getCollegeByPage(page,size,college,colDate);
+    }
+
+    @ApiOperation(value = "通过学校id获取学校的详情")
+    @GetMapping("/ById/{id}")
+    public College getCollegeById(@PathVariable Integer id) {
+        College college = collegeMapper.selectByOne(id);
+        System.out.println(college.toString());
+        return college;
     }
 
     @ApiOperation(value = "新增学校信息")

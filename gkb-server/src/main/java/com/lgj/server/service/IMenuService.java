@@ -44,4 +44,5 @@ public interface IMenuService extends IService<Menu> {
      *@auther 24964
      */
     List<Menu> getAllMenus();
+
 }

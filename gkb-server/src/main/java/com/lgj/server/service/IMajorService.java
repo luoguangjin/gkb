@@ -41,4 +41,11 @@ public interface IMajorService extends IService<Major> {
      * @return
      */
     List<Major> getMajorsByCollegeId(Integer id);
+
+
+    /**
+     * 通过父id查询专业小类
+     * @return
+     */
+    List<Major> getMajorsByParentId(Integer pid);
 }

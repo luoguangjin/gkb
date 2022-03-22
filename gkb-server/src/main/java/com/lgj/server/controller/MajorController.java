@@ -34,6 +34,12 @@ public class MajorController {
         return majorService.getAllMajors();
     }
 
+    @ApiOperation(value = "通过专业父id查询子专业")
+    @GetMapping("/{pid}")
+    public List<Major> getMajorsByParentId(@PathVariable Integer pid){
+        return majorService.getMajorsByParentId(pid);
+    }
+
     @ApiOperation(value = "添加专业信息")
     @PostMapping("/")
     public RespBean addMajor(@RequestBody Major major){
@@ -45,5 +51,6 @@ public class MajorController {
     private RespBean deleteMajor(@PathVariable Integer id){
         return majorService.deleteMajor(id);
     }
+
 
 }

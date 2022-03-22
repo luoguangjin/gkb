@@ -42,6 +42,15 @@
         <include refid="Base_Column_List" />
         from sys_major
         where parentId = #{parentId}
+        and isParent = true
+    </select>
+
+    <!-- 通过父id查询子专业 -->
+    <select id="getMajorsByParentId" resultMap="MajorWithChildren">
+        select
+            id,name,des
+        from sys_major
+        where parentId = #{parentId}
     </select>
 
     <!-- 添加专业信息 -->

@@ -64,4 +64,6 @@ public class Major implements Serializable {
     private Integer result;
 
 
+
+
 }
